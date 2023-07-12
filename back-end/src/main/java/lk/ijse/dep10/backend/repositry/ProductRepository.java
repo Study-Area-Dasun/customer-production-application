@@ -9,5 +9,6 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product,String> {
+    // Find products by group ID
     List<Product> findProductByGroupId(int q);
 }

@@ -26,9 +26,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductDTO> getProduct(int q) {
         if(q != 0) {
+            // Find products by group ID
             return productRepository.findProductByGroupId(q)
                     .stream().map(product -> mapper.map(product, ProductDTO.class)).collect(Collectors.toList());
         }else {
+            // Retrieve all products
             return productRepository.findAll()
                     .stream().map(product -> mapper.map(product, ProductDTO.class)).collect(Collectors.toList());
 

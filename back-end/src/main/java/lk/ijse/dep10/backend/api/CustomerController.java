@@ -15,12 +15,13 @@ public class CustomerController {
 
         this.customerService = customerService;
     }
+    // Endpoint to save a customer
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
     public void saveCustomer(@RequestBody CustomerDTO customerDTO){
         customerService.saveCustomer(customerDTO);
     }
-
+    // Endpoint for customer logging
     @PostMapping
     public CustomerDTO customerLogging(@RequestBody CustomerLoggingDTO customerLoggingDTO){
         return customerService.customerLogging(customerLoggingDTO);
