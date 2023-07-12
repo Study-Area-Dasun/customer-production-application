@@ -9,5 +9,5 @@ import java.util.List;
 import java.util.Optional;
 @Repository
 public interface ProductRepository extends JpaRepository<Product,String> {
-    List<Customer> findProductByGroup_id(String s);
+    List<Product> findProductByGroupId(int q);
 }

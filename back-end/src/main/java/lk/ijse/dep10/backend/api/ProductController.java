@@ -17,7 +17,7 @@ public class ProductController {
     }
 
     @GetMapping
-    public List<ProductDTO> getProduct( String q){
+    public List<ProductDTO> getProduct(@RequestParam int q){
         return productService.getProduct(q);
     }
 }

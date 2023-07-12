@@ -21,6 +21,6 @@ public class Product implements SuperEntity {
     @Column(nullable = false)
     private String price;
     @Column(nullable = false)
-    private int group_id;
+    private int groupId;
 
 }

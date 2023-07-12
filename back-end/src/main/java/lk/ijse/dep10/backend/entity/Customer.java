@@ -24,7 +24,12 @@ public class Customer implements SuperEntity {
     @Column(nullable = false)
     private String password;
     @Column(nullable = false)
-    private int group_id;
+    private int groupId;
 
-
+    public Customer(String name, String email, String password, int groupId) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.groupId = groupId;
+    }
 }

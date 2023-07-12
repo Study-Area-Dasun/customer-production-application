@@ -7,6 +7,6 @@ import lk.ijse.dep10.backend.dto.ProductDTO;
 import java.util.List;
 
 public interface ProductService {
-    List<ProductDTO> getProduct(String group_id);
+    List<ProductDTO> getProduct(int q);
 
 }

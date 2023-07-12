@@ -5,4 +5,6 @@ import lk.ijse.dep10.backend.dto.CustomerLoggingDTO;
 
 public interface CustomerService {
     CustomerDTO customerLogging(CustomerLoggingDTO customerLoggingDTO);
+    void saveCustomer(CustomerDTO customerDTO);
+
 }

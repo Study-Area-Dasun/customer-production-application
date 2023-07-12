@@ -13,6 +13,12 @@ public class CustomerDTO {
     private String name;
     private String email;
     private String password;
-    private String group_id;
+    private int groupId;
 
+    public CustomerDTO(String name, String email, String password, int groupId) {
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.groupId = groupId;
+    }
 }
