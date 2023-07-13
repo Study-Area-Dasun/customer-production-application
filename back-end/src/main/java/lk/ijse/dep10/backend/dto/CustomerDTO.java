@@ -18,7 +18,7 @@ public class CustomerDTO {
     private String email;
     @NotBlank(message = "Password can't be empty")
     private String password;
-    @NotBlank(message = "GroupId can't be empty")
+
     private int groupId;
 
     public CustomerDTO(String name, String email, String password, int groupId) {

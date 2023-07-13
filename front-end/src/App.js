@@ -1,4 +1,8 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useState } from 'react';
+import {Routes, Route, useHistory} from 'react-router-dom';
+import Dashboard from "./Dashboard";
+
 import {
     MDBBtn,
     MDBContainer,
@@ -13,6 +17,44 @@ import {
     from 'mdb-react-ui-kit';
 
 function App() {
+    const navigate = useHistory();
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+
+    function handleEmailChange(e) {
+        setEmail(e.target.value);
+    }
+
+    function handlePasswordChange(e) {
+        setPassword(e.target.value);
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+
+        // Prepare the data to send in the request body
+        console.log(email)
+        // Send the POST request
+        axios.post('http://localhost:8080/api/v1/customers', {
+            "email":email,
+            "password":password,
+        })
+            .then(response => {
+                // Handle the response data here
+                alert("working")
+                console.log(response.data);
+
+                // Navigate to the desired page on successful login
+                navigate.push(<Dashboard/>);
+
+            })
+            .catch(error => {
+                alert("try again");
+
+                console.error(error);
+            });
+    }
     return (
         <MDBContainer className="my-1 ">
 
@@ -32,16 +74,18 @@ function App() {
                             </div>
 
                             <h5 className="fw-normal my-4 pb-3" style={{letterSpacing: '1px'}}>Sign into your account</h5>
+                            <form  onSubmit={handleSubmit}>
+                            <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"  value={email}
+                                      onChange={handleEmailChange}/>
+                            <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg" value={password}
+                                      onChange={handlePasswordChange}/>
 
-                            <MDBInput wrapperClass='mb-4' label='Email address' id='formControlLg' type='email' size="lg"/>
-                            <MDBInput wrapperClass='mb-4' label='Password' id='formControlLg' type='password' size="lg"/>
 
 
-
-                            <button color='dark !impoertan' size='lg' type="button" className="btn btn-primary active mb-4 px-7" data-bs-toggle="button"
+                            <button color='dark !impoertan' size='lg' type="submit" className="btn btn-primary active mb-4 px-7" data-bs-toggle="button"
                                     aria-pressed="true">Login
                             </button>
-
+                            </form>
 
                             <p className="mb-5 pb-lg-2" style={{color: '#393f81'}}>Don't have an account? <a href="#!" style={{color: '#393f81'}}>Register here</a></p>
 
@@ -61,3 +105,5 @@ function App() {
 }
 
 export default App;
+
+
